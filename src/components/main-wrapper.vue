@@ -1,22 +1,38 @@
 <template>
+  <div class="main-wrapper">
     <h1>{{ data }}</h1>
-    <v-catalog/>
-    <v-cart/>
+    <hr/>
+    <v-catalog />
+    <v-cart />
+  </div>
 </template>
 
 <script>
-import vCatalog from './v-catalog.vue';
-import vCart from './v-cart.vue';
+import vCatalog from "./v-catalog.vue";
+import vCart from "./v-cart.vue";
 export default {
-    name: "main-wrapper",
-    components: {vCatalog, vCart},
-    props: {
+  name: "main-wrapper",
+  components: { vCatalog, vCart },
+  props: {},
+  data() {
+    return {
+      data: "OnlineShop",
+    };
+  },
+};
+</script>
 
-    },
-    data() {
-        return {
-            data: "main wrapper"
-        }
+<style lang="scss">
+@import "../assets/styles/styles.scss";
+
+.main-wrapper {
+    h1 {
+        margin-top: 0;
+    }
+    hr {
+        border: 1px solid #505050;
+        margin-bottom: 4rem;
+        max-width: 900px;
     }
 }
-</script>
+</style>

@@ -3,7 +3,7 @@
   <div class="catalog">
   <catalogItem
     class="catalogitem"
-    v-for="product in this.$store.state.products"
+    v-for="product in PRODUCTS"
     :key="product.article"
     :product_data="product"
     @sendArticle="showArticle"
@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 import catalogItem from "./catalog-item.vue";
 export default {
   name: "v-catalog",
@@ -21,6 +21,11 @@ export default {
     return {
 
     }
+  },
+  computed: {
+    ...mapGetters([
+      'PRODUCTS'
+    ])
   },
   methods: {
     ...mapActions([
@@ -40,7 +45,7 @@ export default {
 @import '../assets/styles/styles.scss';
 .catalog {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-auto-rows: 1fr;
   gap: 2rem;
 }
