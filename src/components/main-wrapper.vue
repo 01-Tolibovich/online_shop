@@ -3,13 +3,14 @@
     <h1>{{ data }}</h1>
     <hr/>
     <v-catalog />
-    <v-cart />
+    <v-cart v-if="CART.length" :cart_data="CART"/>
   </div>
 </template>
 
 <script>
 import vCatalog from "./v-catalog.vue";
 import vCart from "./v-cart.vue";
+import { mapGetters } from 'vuex';
 export default {
   name: "main-wrapper",
   components: { vCatalog, vCart },
@@ -19,6 +20,11 @@ export default {
       data: "OnlineShop",
     };
   },
+  computed: {
+        ...mapGetters([
+            'CART'
+        ])
+    }
 };
 </script>
 

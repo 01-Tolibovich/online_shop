@@ -6,13 +6,18 @@
     <div class="info-product">
       <p>{{ product_data.name }}</p>
       <p>Price: {{ product_data.price }} TJS.</p>
-      <button @click="sendDataToPerrent">Add to cart</button>
+      <button @click="addToCart">Add to cart</button>
     </div>
   </div>
 </template>
 
 <script>
-export default {
+export default{
+  data() {
+    return {
+      emits: ['addToCart'],
+    }
+  },
   name: "catalog-item",
   props: {
     product_data: {
@@ -23,9 +28,9 @@ export default {
     },
   },
   methods: {
-    sendDataToPerrent() {
-      this.$emit("sendArticle", this.product_data.article);
-    },
+    addToCart() {
+      this.$emit('addToCart', this.product_data)
+    }
   },
 };
 </script>
